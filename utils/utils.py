@@ -54,7 +54,8 @@ def intersect_edges(edge1, edge2):
                      edge2.p[0], edge2.p[1], edge2.q[0], edge2.q[1])
 
 # min distance from a point to a line segment (same as to line except)
-# line doesn't extend
+# line segment doesn't extend
+# argument derived from http://paulbourke.net/geometry/pointlineplane/
 def dist_point_to_line_seg (point, edge):
     # compute vectors
     edge_dist = (edge.p[0] - edge.q[0], edge.p[1] - edge.q[1])

@@ -75,7 +75,7 @@ class Polygon:
         self._convexHull = quickhull(self._polyPoints.copy())
         return self._convexHull
 
-    def visualize(self, nolines=False):
+    def visualize(self, nolines=False, color='r-'):
         '''
         Visualize simple polygon based on order of vertices
         '''
@@ -88,5 +88,5 @@ class Polygon:
         if nolines:
             plt.plot(x, y, 'ro')
         else:
-            plt.plot(x, y, 'r-')
+            plt.plot(x, y, color)
         plt.show()

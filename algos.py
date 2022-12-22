@@ -32,9 +32,20 @@ class PointToEdge:
         return ('dist: ' + str(self.dist) + ' p,e:' + str(self.point) + str(self.edge))
 
 
-def iterative_hull (n, debug=False):
-    pts = np.random.rand(n, 2)
-    pointsToAdd = list(zip(pts[:, 0], pts[:, 1]))
+def iterative_hull (n, init='square', debug=False):
+    
+    if init == 'gauss':
+        pts_x = np.random.normal(0, 1, n)
+        pts_y = np.random.normal(0, 1, n)
+        pointsToAdd = list(zip(pts_x, pts_y))
+    elif init == 'beta':
+        pts_x = np.random.beta(1, 1, n)
+        pts_y = np.random.normal(1, 1, n)
+        pointsToAdd = list(zip(pts_x, pts_y))
+    else:
+        pts = np.random.rand(n, 2)
+        pointsToAdd = list(zip(pts[:, 0], pts[:, 1]))
+        
     points = quickhull(pointsToAdd.copy())
     
     if debug:
@@ -139,7 +150,6 @@ def angular_random(n,
         print('Center', center)
         print('Processed Angles', angles)
     
-    r = halfnorm(l_mu, l_sigma).rvs(size=n)
     for i in range(n): # Primary loop O(n)
         angle = angles[i]
         length = random.uniform(0, l_mu) #r[i]

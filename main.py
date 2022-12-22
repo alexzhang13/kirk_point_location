@@ -14,12 +14,19 @@ from algos import (
 # Run a simulation and generate the plots
 def run(n, algo):
     assert algo == "angular" or algo == "iterative"
+    assert algo == "iterative_gauss" or algo == "iterative_beta"
     # Choice of algorithm
     if algo == "angular":
         poly = angular_random(n)
 
-    if algo == "iterative":
+    elif algo == "iterative":
         poly = iterative_hull(n)
+        
+    elif algo == "iterative_gauss":
+        poly = iterative_hull(n, init='gauss')
+        
+    elif algo == "iterative_beta":
+        poly = iterative_hull(n, init='beta')
 
     poly.visualize()
 
