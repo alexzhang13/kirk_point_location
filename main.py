@@ -13,8 +13,8 @@ from algos import (
 
 # Run a simulation and generate the plots
 def run(n, algo):
-    assert algo == "angular" or algo == "iterative"
-    assert algo == "iterative_gauss" or algo == "iterative_beta"
+    assert algo == "angular" or algo == "iterative" \
+        or algo == "iterative_gauss" or algo == "iterative_beta"
     # Choice of algorithm
     if algo == "angular":
         poly = angular_random(n)
